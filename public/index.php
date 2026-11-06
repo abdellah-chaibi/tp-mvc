@@ -5,11 +5,9 @@ require __DIR__ . '/../src/autoload.php';
 $uri    = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $method = $_SERVER['REQUEST_METHOD'];
 $routes = [
-  $routes = [
   'GET /taches'            => [TacheController::class, 'index'],
   'POST /taches'           => [TacheController::class, 'store'],
   'POST /taches/supprimer' => [TacheController::class, 'supprimer'],
-]
 ];
 
 // Redirige la racine vers la liste
