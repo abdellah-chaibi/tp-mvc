@@ -1,24 +1,30 @@
 <?php
-class TacheModel {
+class TacheModel
+{
   private PDO $db;
 
-  function __construct() {
+  function __construct()
+  {
     $this->db = Database::pdo();
   }
 
-  function tout(): array {
+  function tout(): array
+  {
     return $this->db
       ->query('SELECT id, titre FROM tache ORDER BY id')
       ->fetchAll();
   }
 
-  function ajouter(string $titre): void {
-    // TODO 2 : insérer le titre dans la table tache
-    //          (requête préparée : INSERT INTO tache(titre) VALUES(?))
+  function ajouter(string $titre): void
+  {
+    $stmt = $this->db->prepare('INSERT INTO tache (titre) VALUES (?)');
+    $stmt->execute([$titre]);
   }
 
-  function supprimer(int $id): void {
-    // TODO 3 : supprimer la tâche dont l'id est $id
-    //          (requête préparée : DELETE FROM tache WHERE id = ?)
+  function supprimer(int $id): void
+  {
+    $stmt = $this->db->prepare('DELETE FROM tache WHERE id = ?');
+    $stmt->execute([$id]);
+
   }
 }

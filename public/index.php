@@ -4,18 +4,13 @@ require __DIR__ . '/../src/autoload.php';
 
 $uri    = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $method = $_SERVER['REQUEST_METHOD'];
-
 $routes = [
+  $routes = [
   'GET /taches'            => [TacheController::class, 'index'],
-  // TODO 1 : ajouter les deux routes manquantes
-  //   - POST /taches            -> TacheController::store
-  //   - POST /taches/supprimer  -> TacheController::supprimer
-];
-$routes = array_merge($routes, $routes);  
-$routes = array_merge($routes, [
-  'POST /taches' => [TacheController::class, 'store'],
+  'POST /taches'           => [TacheController::class, 'store'],
   'POST /taches/supprimer' => [TacheController::class, 'supprimer'],
-]);
+]
+];
 
 // Redirige la racine vers la liste
 $routes = array_merge($routes, [
