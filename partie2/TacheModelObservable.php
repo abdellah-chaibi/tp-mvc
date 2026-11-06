@@ -19,6 +19,7 @@ class TacheModelObservable implements SplSubject {
 
   function ajouter(string $titre): void {
     $this->taches[] = $titre;
+    $this->notify();
     // TODO 7 : prévenir les observateurs (une seule ligne)
   }
 

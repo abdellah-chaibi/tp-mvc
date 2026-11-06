@@ -5,7 +5,7 @@
 class CompteurView implements SplObserver {
     public function update(SplSubject $subject) {
         // TODO 10 : afficher le nombre de tâches
-        $count = count($subject->getTaches());
+        $count = count($subject->etat());
         echo "$count tâche(s)\n";
     }
 }       
