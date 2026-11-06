@@ -7,6 +7,7 @@ require __DIR__ . '/CompteurView.php';
 $m = new TacheModelObservable();
 $m->attach(new ListeView());
 // TODO 9 : attacher aussi un CompteurView
-
+$m->attach(new CompteurView());
+$m->attach(new FortuneView());
 $m->ajouter('Réviser MVC');
 $m->ajouter('Faire le TP');

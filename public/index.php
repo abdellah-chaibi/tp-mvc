@@ -11,8 +11,16 @@ $routes = [
   //   - POST /taches            -> TacheController::store
   //   - POST /taches/supprimer  -> TacheController::supprimer
 ];
+$routes = array_merge($routes, $routes);  
+$routes = array_merge($routes, [
+  'POST /taches' => [TacheController::class, 'store'],
+  'POST /taches/supprimer' => [TacheController::class, 'supprimer'],
+]);
 
 // Redirige la racine vers la liste
+$routes = array_merge($routes, [
+  'GET /' => [TacheController::class, 'index'],
+]);
 if ($method === 'GET' && $uri === '/') {
   header('Location: /taches');
   exit;
